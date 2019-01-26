@@ -16,9 +16,14 @@ def login():
     if request.method == 'POST':
         username_form = request.form['username']
         password_form = request.form['password']
-        if username_form == "brendan.muscat@gmail.com" and password_form == "hello":
-            session['username'] = username_form
-            return main()
+
+        cur.execute("SELECT COUNT(1) FROM users WHERE username = %s;", [username_form])
+        if cur.fetchone()[0]:
+            cur.execute("SELECT password FROM users WHERE username = %s;", [username_form])
+            for row in cur.fetchall():
+                if password_form == row[0]:
+                    session['username'] = username_form
+        return main()
     return render_template('login.html')
 
 @app.route("/logout")
