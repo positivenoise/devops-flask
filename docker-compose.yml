@@ -9,6 +9,19 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: my-secret-password
       MYSQL_DATABASE: flask
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    depends_on: 
+      - db
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_USER: root
+      PMA_PASSWORD: my-secret-password
+      PMA_HOST: db
+    volumes:
+     - /sessions
   app:
     depends_on:
       - db
