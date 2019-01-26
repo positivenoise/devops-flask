@@ -1,6 +1,18 @@
-app:
-  build: ./app
-  ports:
-   - "5000:5000"
-  volumes:
-   - .:/code
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql:8
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-password
+      MYSQL_DATABASE: flask
+  app:
+    depends_on:
+      - db
+    image: devops-flask:latest
+    restart: always
+    ports:
+      - "5000:5000"

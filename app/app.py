@@ -1,4 +1,5 @@
 from flask import Flask, render_template, session, request
+import MySQLdb
 app = Flask(__name__)
 app.secret_key = 'welcome to the jungle'
  
@@ -26,4 +27,6 @@ def logout():
     return main()
  
 if __name__ == "__main__":
+    db = MySQLdb.connect(host="db", user="root", passwd="my-secret-password", db="flask")
+    cur = db.cursor()
     app.run(host='0.0.0.0')
