@@ -9,6 +9,10 @@ def main():
         return render_template('index.html', session_user_name=session['username'])
     return render_template('index.html')
 
+@app.route("/blog")
+def blog_main():
+    return render_template('blog_main.html')
+
 @app.route("/login", methods=['GET','POST'])
 def login():
     if 'username' in session:

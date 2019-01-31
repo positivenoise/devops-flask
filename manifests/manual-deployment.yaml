@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: devops-flask
+  labels:
+    app: devops-flask
+spec:
+  ports:
+    - port: 5000
+      targetPort: 5000
+  selector:
+    app: devops-flask
+    tier: devops-flask
+  type: NodePort
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: devops-flask
+  labels:
+    app: devops-flask
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: devops-flask
+        tier: devops-flask
+    spec:
+      containers:
+      - image: 127.0.0.1:30400/devops-flask:latest
+        name: devops-flask
+        ports:
+        - containerPort: 5000
+          name: devops-flask

@@ -3,11 +3,11 @@ version: '3.1'
 services:
 
   db:
-    image: mysql-db:v0
+    image: mysql-db:latest
     command: --default-authentication-plugin=mysql_native_password
     restart: always
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
+    image: phpmyadmin:latest
     depends_on: 
       - db
     restart: always
@@ -22,7 +22,7 @@ services:
   app:
     depends_on:
       - db
-    image: devops-flask:v0
+    image: devops-flask:latest
     restart: always
     ports:
       - "5000:5000"
