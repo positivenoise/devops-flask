@@ -6,10 +6,6 @@ node {
     
     sh "git rev-parse --short HEAD > commit-id"
 
-    tag = readFile('commit-id').replace("\n", "").replace("\r", "")
-    registryHost = "127.0.0.1:30400/"
-    env.BUILDIMG=imageName
-
     stage "Build"
     
         sh "docker build -t 127.0.0.1:30400/devops-flask:latest app"
