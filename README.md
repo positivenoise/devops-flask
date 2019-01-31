@@ -32,6 +32,7 @@ Build the custom images with:
 docker build -t 127.0.0.1:30400/devops-flask:latest app
 docker build -t 127.0.0.1:30400/mysql-db:latest mysql-db
 docker build -t 127.0.0.1:30400/phpmyadmin:latest phpmyadmin
+docker build -t 127.0.0.1:30400/jenkins:latest jenkins
 ```
 Find minikube IP with `minikube ip` and put in REG_IP address
 
@@ -46,6 +47,7 @@ Push image to repositry with:
 docker push 127.0.0.1:30400/devops-flask:latest
 docker push 127.0.0.1:30400/mysql-db:latest
 docker push 127.0.0.1:30400/phpmyadmin:latest
+docker push 127.0.0.1:30400/jenkins:latest
 ```
 
 Check the registry: `minikube service registry-ui​​`
@@ -55,9 +57,11 @@ Deploy to Kubernetes with:
 kubectl apply -f manifests/devops-flask-manual-deployment.yaml
 kubectl apply -f manifests/mysql-db-manual-deployment.yaml
 kubectl apply -f manifests/phpmyadmin-manual-deployment.yaml
+kubectl apply -f manifests/jenkins.yaml
 ```
 Check the deployment with `minikube service devops-flask​​`
 Check phpmyadmin with `minikube service phpmyadmin​​` and root:my-secret-password
+Jenkins: `minikube service jenkins`
 
 See everything with `minikube dashboard`
 If errors try resetting with `minikube delete`
