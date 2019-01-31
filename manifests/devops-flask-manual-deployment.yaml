@@ -12,7 +12,6 @@ spec:
     app: devops-flask
     tier: devops-flask
   type: NodePort
-
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -35,3 +34,4 @@ spec:
         ports:
         - containerPort: 5000
           name: devops-flask
+
