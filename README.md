@@ -71,12 +71,18 @@ docker stop socat-registry; docker rm socat-registry;
 docker run -d -e "REG_IP=10.0.1.63" -e "REG_PORT=30400" --name socat-registry -p 30400:5000 socat-registry
 docker push 127.0.0.1:30400/jenkins:latest
 kubectl apply -f manifests/jenkins.yaml
+kubectl rollout status jenkins
+minikube service jenkins
 ```
 
-Jenkins: `minikube service jenkins`
 RESULT = kubectl get pods --selector=app=jenkins --output=jsonpath={.items..metadata.name}
 Display Jenkins admin password kubectl exec -it RESULT cat /var/jenkins_home/secrets/initialAdminPassword
 
-Select Install suggested plugins
+### Setup Pipeline
 
-Create an admin user
+* Select Install suggested plugins
+* Create an admin user
+* Create a new item and select Pipeline
+* Definition is Pipeline script from SCM
+* https://github.com/positivenoise/devops-flask
+* Save and run

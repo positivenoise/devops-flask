@@ -21,7 +21,7 @@ node {
 
     stage "Deploy"
 
-        kubernetesDeploy configs: "mainfests/devops-flask-manual-deployment.yaml", kubeconfigId: 'devops-flask_kubeconfig'
-        kubernetesDeploy configs: "mainfests/mysql-db-manual-deployment.yaml", kubeconfigId: 'mysql-db_kubeconfig'
-        kubernetesDeploy configs: "mainfests/phpmyadmin-manual-deployment.yaml", kubeconfigId: 'phpmyadmin_kubeconfig'
+        sh "kubectl apply -f manifests/devops-flask-manual-deployment.yaml"
+        sh "kubectl apply -f manifests/mysql-db-manual-deployment.yaml"
+        sh "kubectl apply -f manifests/phpmyadmin-manual-deployment.yaml"
 }
