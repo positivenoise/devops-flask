@@ -21,6 +21,6 @@ node {
 
     stage "Deploy"
         
-        kubernetesDeploy configs: "manifests/devops-flask-manual-deployment", kubeconfigId: 'devops-flask_kubeconfig'
+        kubernetesDeploy configs: "manifests/devops-flask-manual-deployment.yaml", kubeconfigId: 'devops-flask_kubeconfig'
 
 }
