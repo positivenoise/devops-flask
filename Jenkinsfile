@@ -22,5 +22,6 @@ node {
     stage "Deploy"
         
         kubernetesDeploy configs: "manifests/devops-flask-manual-deployment.yaml", kubeconfigId: 'devops-flask_kubeconfig'
-
+        kubernetesDeploy configs: "manifests/mysql-db-manual-deployment.yaml", kubeconfigId: 'devops-flask_kubeconfig'
+        kubernetesDeploy configs: "manifests/phpmyadmin-manual-deployment.yaml", kubeconfigId: 'devops-flask_kubeconfig'
 }
