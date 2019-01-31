@@ -20,8 +20,6 @@ node {
 
 
     stage "Deploy"
-
-        sh "kubectl apply -f manifests/devops-flask-manual-deployment.yaml"
-        sh "kubectl apply -f manifests/mysql-db-manual-deployment.yaml"
-        sh "kubectl apply -f manifests/phpmyadmin-manual-deployment.yaml"
+        
+        sh "kubectl get pods"
 }
