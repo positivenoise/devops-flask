@@ -21,5 +21,6 @@ node {
 
     stage "Deploy"
         
-        sh "kubectl get pods"
+        kubernetesDeploy configs: "manifests/devops-flask-manual-deployment", kubeconfigId: 'devops-flask_kubeconfig'
+
 }
