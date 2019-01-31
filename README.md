@@ -77,6 +77,11 @@ minikube service jenkins
 
 RESULT = kubectl get pods --selector=app=jenkins --output=jsonpath={.items..metadata.name}
 Display Jenkins admin password kubectl exec -it RESULT cat /var/jenkins_home/secrets/initialAdminPassword
+### Setup Credentials
+
+Credentials -> Global credentials (unrestricted) -> Add Credentials
+
+ID is devops-flask_kubeconfig - Kubeconfig enter directly and copy the contents of /var/jenkins_home/.kube/config but ensure the server address is correct.
 
 ### Setup Pipeline
 
